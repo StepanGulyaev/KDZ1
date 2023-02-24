@@ -53,12 +53,46 @@ def make_pareto(project_data):
         if not (project.is_exclused()):
             pareto.append(project)
     return pareto
+
 def show_pareto(pareto):
     pareto_table = PrettyTable()
     pareto_table.field_names = ["№", "f1", "f2"]
     for i in range(len(pareto)):
         pareto_table.add_row([i+1,pareto[i].f1, pareto[i].f2])
     print(pareto_table)
+
+
+def count_Bi(project, project_data):
+    Bi = 0
+    for i in range(len(project_data)):
+        if (project_data[i].f1 >= project.f1 and project_data[i].f2 >= project.f2) and \
+                (project_data[i].f1 != project.f1 and project_data[i].f2 != project.f2):
+            Bi += 1
+    return Bi
+
+
+def draw_cluster_table(project_data):
+    cluster_table = PrettyTable()
+    cluster_table.add_column("i",["f1","f2","Bi","Фi","Ki"])
+    for i in range(len(project_data)):
+        Bi = count_Bi(project_data[i],project_data)
+        Fi = round(1/(1+float(Bi)/(N-1)),3)
+        dist1 = abs(Fi - 1)
+        dist2 = abs(Fi - 0.85)
+        dist3 = abs(Fi - 0.75)
+        if dist1 == min(dist1,dist2,dist3):
+            Ki = 1
+        elif dist2 == min(dist1,dist2,dist3):
+            Ki = 2
+        elif dist3 == min(dist1,dist2,dist3):
+            Ki = 3
+        cluster_table.add_column(str(i+1),
+                                [project_data[i].f1,
+                                project_data[i].f2,
+                                Bi,
+                                Fi,
+                                Ki])
+    print(cluster_table)
 
 
 

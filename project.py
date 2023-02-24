@@ -8,3 +8,4 @@ class Project:
         if 'x' in self.flag_list:
             return True
         return False
+
