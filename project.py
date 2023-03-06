@@ -1,8 +1,9 @@
 class Project:
-    def __init__(self,f1,f2):
+    def __init__(self,f1,f2,number):
         self.f1 = f1
         self.f2 = f2
         self.flag_list = []
+        self.number = number
 
     def is_exclused(self):
         if 'x' in self.flag_list:

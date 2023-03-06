@@ -58,15 +58,15 @@ def show_pareto(pareto):
     pareto_table = PrettyTable()
     pareto_table.field_names = ["№", "f1", "f2"]
     for i in range(len(pareto)):
-        pareto_table.add_row([i+1,pareto[i].f1, pareto[i].f2])
+        pareto_table.add_row([pareto[i].number,pareto[i].f1, pareto[i].f2])
     print(pareto_table)
 
 
 def count_Bi(project, project_data):
     Bi = 0
     for i in range(len(project_data)):
-        if (project_data[i].f1 >= project.f1 and project_data[i].f2 >= project.f2) and \
-                (project_data[i].f1 != project.f1 and project_data[i].f2 != project.f2):
+        if (project_data[i].f1 >= project.f1 and project_data[i].f2 >= project.f2) and not\
+                (project_data[i].f1 == project.f1 and project_data[i].f2 == project.f2):
             Bi += 1
     return Bi
 
