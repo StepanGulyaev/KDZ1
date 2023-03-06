@@ -2,10 +2,12 @@ from project import Project
 import random
 N = 20
 n = 8
+r = 0.8 #r is a radius in which one randomly generated project can't contain another one.
+        #It was made with purpose to make graph clearer and for more even distribution of values
 
 def distribution_for_random(all_cords,cords):
     for i in range(len(all_cords)):
-        if (abs(all_cords[i][0] - cords[0]) <= 0.8 and abs(all_cords[i][1] - cords[1]) <= 0.8):
+        if ((all_cords[i][0] - cords[0])**2 + (all_cords[i][1] - cords[1])**2 < r**2):
            return True
     return False
 
