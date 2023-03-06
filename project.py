@@ -5,7 +5,7 @@ class Project:
         self.flag_list = []
         self.number = number
 
-    def is_exclused(self):
+    def is_excluded(self):
         if 'x' in self.flag_list:
             return True
         return False

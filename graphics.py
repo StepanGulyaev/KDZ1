@@ -1,7 +1,9 @@
+import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
 from tables import *
 
+matplotlib.use('TkAgg')
 
 def draw_field(field):
     major_ticks = np.arange(0, 17, 2)
