@@ -82,10 +82,13 @@ def draw_cluster_table(project_data):
         dist3 = abs(Fi - 0.75)
         if dist1 == min(dist1,dist2,dist3):
             Ki = 1
+            project_data[i].add_to_cluster(1)
         elif dist2 == min(dist1,dist2,dist3):
             Ki = 2
+            project_data[i].add_to_cluster(2)
         elif dist3 == min(dist1,dist2,dist3):
             Ki = 3
+            project_data[i].add_to_cluster(3)
         cluster_table.add_column(str(i+1),
                                 [project_data[i].f1,
                                 project_data[i].f2,

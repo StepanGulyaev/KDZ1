@@ -3,6 +3,12 @@ import random
 N = 20
 n = 8
 
+def distribution_for_random(all_cords,cords):
+    for i in range(len(all_cords)):
+        if (abs(all_cords[i][0] - cords[0]) <= 0.8 and abs(all_cords[i][1] - cords[1]) <= 0.8):
+           return True
+    return False
+
 def cords_exist(all_cords,cords):
     for i in range(len(all_cords)):
         if(all_cords[i][0] == cords[0] and all_cords[i][1] == cords[1]):
@@ -20,7 +26,7 @@ def gen_random_projects():
             -f1 + f2 <= n and\
             f1 + f2 >= 2*n:
             cords = (f1,f2)
-            if not cords_exist(all_cords,cords):
+            if not distribution_for_random(all_cords,cords):
                 all_cords.append(cords)
                 project = Project(cords[0],cords[1],i)
                 projects.append(project)

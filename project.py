@@ -10,3 +10,6 @@ class Project:
             return True
         return False
 
+    def add_to_cluster(self,cluster):
+        self.cluster = cluster
+
