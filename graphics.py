@@ -7,10 +7,21 @@ def draw_graphics(project_data,pareto):
     ax = plt.gca()
     ax.cla()
 
-    ax.set_title('(f1 - 8)² + (f2 -8 )² ≤ 16; -f1 + f2 ≤ 8; f1 + f2 ≥ 16',)
+    major_ticks = np.arange(0, 17, 2)
+    minor_ticks = np.arange(0, 17,1)
 
-    ax.set_xlim((0, 18))
-    ax.set_ylim((0, 18))
+    ax.set_xticks(major_ticks)
+    ax.set_xticks(minor_ticks, minor=True)
+    ax.set_yticks(major_ticks)
+    ax.set_yticks(minor_ticks, minor=True)
+
+    # And a corresponding grid
+    ax.grid(which='both')
+
+    ax.set_title('(f1 - 8)² + (f2 -8 )² ≤ 64; -f1 + f2 ≤ 8; f1 + f2 ≥ 16',)
+    ax.set_aspect(1)
+    ax.set_xlim((0, 16))
+    ax.set_ylim((0, 16))
     circle = plt.Circle((8, 8), 8, color='b', fill=False)
     f1 = np.arange(0, 16, 0.01)
     ax.plot(f1, f1 + n, f1, -f1 + 2 * n)
